@@ -9,6 +9,10 @@ import axios from 'axios'
 import './mock/mock.js'
 import './mock/index.js'
 import './mock/test1.js'
+import './mock/data.js'
+import './mock/CHeadData.js'
+import './mock/CTableData.js'
+import './mock/CUserData.js'
 
 Vue.use(ElementUI);
 
