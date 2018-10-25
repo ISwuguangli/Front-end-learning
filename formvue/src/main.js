@@ -13,6 +13,8 @@ import './mock/data.js'
 import './mock/CHeadData.js'
 import './mock/CTableData.js'
 import './mock/CUserData.js'
+import './mock/myForm.js'
+import './mock/demoData.js'
 
 Vue.use(ElementUI);
 

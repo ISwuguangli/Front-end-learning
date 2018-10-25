@@ -16,7 +16,7 @@ export default {
                     number:"001"
                 },
                 {
-                    name:"吴广丽",
+                    name:"wu",
                     age:20,
                     number:"002"}
             ]

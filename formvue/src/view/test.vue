@@ -1,39 +1,67 @@
 <template>
-  <div class="hello">
-    <p>HELLO WORLD</p>
-    <ul>
-    	<li v-for="(item,index) in datalist" :key='index'>
-    		<h1>{{item.personName}}:<span>{{item.viewName}}</span></h1>
-    	</li>
-    </ul>
-  </div>
+  <el-table
+    :data="tableData2"
+    style="width: 100%"
+    :row-class-name="tableRowClassName">
+    <el-table-column
+      prop="date"
+      label="日期"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址">
+    </el-table-column>
+  </el-table>
 </template>
-<!--mockjs应用页面-->
-<script>
-import axios from 'axios' //局部引入
-export default {
-  name: 'HelloWorld',
-  data () {
-    return {
-      datalist:[]
-    }
-  },
-  mounted(){
-  	this.showdata()
-  },
-  methods:{
-  	showdata(){
-//		import axios from 'axios'
-//    Vue.prototype.$http = axios  在main.js中把axios添加到vue原型中，则可在每个组件中调用
-  		this.$http.get('/user') //全局引入使用vue原型中的方法this.$http,已经把axios添加到原型中
-  		.then((res)=>{
-  			console.log(res.data.data)
-  			this.datalist = res.data.data
-  		})
-  		.catch((err)=>{
-  			console.log('调用失败',err)
-  		})
-  	}
+
+<style>
+  .el-table .warning-row {
+    background: oldlace;
   }
-}
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>
+
+<script>
+  export default {
+    methods: {
+      tableRowClassName({row, rowIndex}) {
+        if (rowIndex === 1) {
+          return 'warning-row';
+        } else if (rowIndex === 3) {
+          return 'success-row';
+        }
+        return '';
+      }
+    },
+    data() {
+      return {
+        tableData2: [{
+          date: '2016-05-02',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
+        }, {
+          date: '2016-05-04',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }, {
+          date: '2016-05-01',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄',
+        }, {
+          date: '2016-05-03',
+          name: '王小虎',
+          address: '上海市普陀区金沙江路 1518 弄'
+        }]
+      }
+    }
+  }
 </script>
